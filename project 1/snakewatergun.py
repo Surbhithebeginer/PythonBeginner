@@ -4,27 +4,39 @@
 0 for gun
 '''
 import random
-computer = random.choice([-1,0,1])
-youstr =input("Enter your choice:")
 youDict ={"s":1,"w":-1,"g":0}
 reverseDict = {1:"Snake",-1:"Water",0:"Gun"}
-you = youDict[youstr]
+
 #by now we have 2 numbers(variables),you and computer
-print(f"You chose {reverseDict[you]}\ncomputer chose{reverseDict[computer]}")
-if(computer == you):
-    print("it's a draw")
-else:
-    if(computer ==-1 and you ==1 ):
-        print("You Win!")
-    elif(computer ==-1 and you ==0):
-        print("You Lose!")
-    elif(computer ==1 and you ==-1):
-        print("You Lose!")
-    elif(computer ==1 and you ==0):
-        print("You Win!")
-    elif(computer == 0 and you ==-1):
-        print("You Win!")
-    elif(computer ==0 and you == 1):
-        print("You Lose!")
-    else:
-        print("Something is wrong")
+while True:
+    youstr =input("Enter your choice: (s/w/g) or q to quit: ").lower()
+
+    if (youstr == "q"):
+        print("Thank you for playing!")
+        break
+    try:
+        you = youDict[youstr]
+        computer = random.choice([-1,0,1])
+        print(f"You chose {reverseDict[you]}\ncomputer chose {reverseDict[computer]}")
+
+        if(computer == you):
+            print("it's a draw")
+        else:
+            if(computer ==-1 and you ==1 ):
+                print("You Win!")
+            elif(computer ==-1 and you ==0):
+                 print("You Lose!")
+            elif(computer ==1 and you ==-1):
+                 print("You Lose!")
+            elif(computer ==1 and you ==0):
+                 print("You Win!")
+            elif(computer == 0 and you ==-1):
+                print("You Win!")
+            elif(computer ==0 and you == 1):
+                 print("You Lose!")
+            else:
+                print("Something is wrong")quit
+    except KeyError as k:
+        print("Invalid choice , enter only 's','w','g'")
+
+    
